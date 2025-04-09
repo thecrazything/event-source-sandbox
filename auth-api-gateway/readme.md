@@ -1,0 +1,1 @@
+protoc --proto_path=./  messages/*.proto --go_out=./

@@ -1,0 +1,15 @@
+syntax="proto3";
+
+option go_package = "/proto";
+
+message LoginUser {
+    string LoginRequestId = 1;
+    string username = 2;
+    string password = 3;
+}
+
+message LoginResponse {
+    string LoginRequestId = 1;
+    string status = 2;
+    string token = 3;
+}

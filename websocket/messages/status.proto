@@ -1,0 +1,7 @@
+syntax="proto3";
+
+option go_package = "/proto";
+
+message StatusMessage {
+  string message = 3;
+}
