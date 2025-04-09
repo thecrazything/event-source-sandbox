@@ -1,0 +1,64 @@
+<div class="p-4">
+  <form [formGroup]="form">
+    <div class="flex flex-col w-full">
+      <mat-form-field appearance="outline" class="w-full">
+        <mat-label>Username</mat-label>
+        <input formControlName="username" matInput placeholder="Placeholder" class="w-full">
+        @if(validUsername()) {
+          <mat-icon matSuffix>check</mat-icon>
+        } @else {
+          <mat-icon matSuffix>face</mat-icon>
+        }
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="w-full">
+        <mat-label>Password</mat-label>
+        <input formControlName="password" matInput placeholder="Placeholder" class="w-full" type="password">
+        @if(passwordSecurity() < 50) {
+          <mat-icon matSuffix>lock</mat-icon>
+        } @else {
+          <mat-icon matSuffix>check</mat-icon>
+        }
+      </mat-form-field>
+      <mat-progress-bar style="margin-top: -16px; margin-bottom: 16px;" mode="determinate" [value]="passwordSecurity()"></mat-progress-bar>
+
+      <button mat-flat-button [disabled]="form.invalid || registerLoading()" (click)="onRegister()">
+        <div style="position: relative; height: 32px; width: 80px;">
+          <ng-container *ngIf="registerLoading(); else notLoading">
+            <div @fadeAnimation style="position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+                                       display: flex; align-items: center; justify-content: center;">
+              <mat-spinner diameter="20"></mat-spinner>
+            </div>
+          </ng-container>
+
+          <ng-template #notLoading>
+            <ng-container *ngIf="registerSuccess(); else checkError">
+              <div @fadeAnimation style="position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+                                         display: flex; align-items: center; justify-content: center;">
+                <mat-icon>check</mat-icon>
+              </div>
+            </ng-container>
+
+            <ng-template #checkError>
+              <ng-container *ngIf="registerError(); else showregisterText">
+                <div @fadeAnimation style="position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+                                           display: flex; align-items: center; justify-content: center;">
+                  <mat-icon>error</mat-icon>
+                </div>
+              </ng-container>
+
+              <ng-template #showregisterText>
+                <div @fadeAnimation style="position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+                                           display: flex; align-items: center; justify-content: center;">
+                  Register
+                </div>
+              </ng-template>
+            </ng-template>
+          </ng-template>
+        </div>
+      </button>
+      <button type="button" mat-button class="mt-2" [routerLink]="['/login']">
+        Already a user?
+      </button>
+    </div>
+ </form>
+</div>

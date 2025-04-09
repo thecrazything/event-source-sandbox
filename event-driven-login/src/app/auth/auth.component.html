@@ -1,0 +1,16 @@
+
+<div class="flex justify-center bg-gradient h-full">
+  <div>
+    <h1 class="display-4 text-center"  style="min-height: 38px;">
+      <span @fadeAnimation *ngIf="visibleTitle()">{{pageTitle()}}</span>
+    </h1>
+    <mat-card appearance="raised">
+      <mat-card-content >
+        <div  style="min-width: 280px; min-height: 280px;">
+          <router-outlet/>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+

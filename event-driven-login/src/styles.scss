@@ -1,0 +1,114 @@
+/* You can add global styles to this file, and also import other style files */
+@use 'mat';
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+.flex {
+  display: flex;
+}
+
+.w-full {
+  width: 100%;
+}
+.h-full {
+  height: 100%;
+}
+
+.justify-center {
+  justify-content: center;
+}
+.justify-start {
+  justify-content: flex-start;
+}
+.justify-end {
+  justify-content: flex-end;
+}
+.justify-between {
+  justify-content: space-between;
+}
+.justify-around {
+  justify-content: space-around;
+}
+.flex-col {
+  flex-direction: column;
+}
+.flex-row {
+  flex-direction: row;
+}
+
+// Generate margin classes
+$spacing: 4px;
+
+@for $i from 1 through 16 {
+  .m-#{$i} {
+    margin: $i * $spacing;
+  }
+  .mt-#{$i} {
+    margin-top: $i * $spacing;
+  }
+  .mb-#{$i} {
+    margin-bottom: $i * $spacing;
+  }
+  .ml-#{$i} {
+    margin-left: $i * $spacing;
+  }
+  .mr-#{$i} {
+    margin-right: $i * $spacing;
+  }
+}
+
+// Generate padding classes
+@for $i from 1 through 16 {
+  .p-#{$i} {
+    padding: $i * $spacing;
+  }
+  .pt-#{$i} {
+    padding-top: $i * $spacing;
+  }
+  .pb-#{$i} {
+    padding-bottom: $i * $spacing;
+  }
+  .pl-#{$i} {
+    padding-left: $i * $spacing;
+  }
+  .pr-#{$i} {
+    padding-right: $i * $spacing;
+  }
+}
+
+.text-center {
+  text-align: center;
+}
+
+.bg-gradient {
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(120deg, #940394, rgba(5, 161, 189, 0.8));
+    background-size: 200% 200%;
+    animation: gradient-move 10s ease infinite;
+    filter: blur(8px);
+    z-index: -1;
+  }
+
+  @keyframes gradient-move {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+}
